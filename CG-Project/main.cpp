@@ -1,8 +1,4 @@
 
-//#include <cmath>
-//char image1Path []="/Users/raniahmarzouki/Desktop/wall-texture-1.bmp"; // walls
-//char image2Path []="/Users/raniahmarzouki/Desktop/floor-texture-2-.bmp"; // floor
-
 #ifdef __APPLE__
 #define GL_SILENCE_DEPRECATION
 #include <OpenGL/gl.h>
@@ -56,7 +52,25 @@ bool key3_flag = false ;
 GLuint myTexture1;
 
 
-char image1Path []="/Users/raniahmarzouki/Desktop/computer graphics/CG-Project/floor-texture-2-.bmp"; // walls and floor
+// Texture used for walls and floor. Paths are relative so the game runs from
+// the repository root (or from a build folder one level below it).
+const char * texturePaths[] = {
+    "assets/floor-texture.bmp",
+    "../assets/floor-texture.bmp",
+    "../../assets/floor-texture.bmp",
+    "floor-texture.bmp"
+};
+const int texturePathCount = sizeof(texturePaths) / sizeof(texturePaths[0]);
+
+// Returns the first texture path that exists, or the default one.
+const char * findTexturePath()
+{
+    for (int i = 0; i < texturePathCount; ++i) {
+        FILE * f = fopen(texturePaths[i], "rb");
+        if (f != NULL) { fclose(f); return texturePaths[i]; }
+    }
+    return texturePaths[0];
+}
 
 //------------------------------------------------
 void drawFilledCircle(GLfloat x, GLfloat y, GLfloat radius){
@@ -3018,7 +3032,7 @@ void init (){
         transValueY = 0.0;
         transValueZ = 2.0;
         //------- Texture 1- wall  ---------
-        myTexture1 = LoadTexture(image1Path,626,626);
+        myTexture1 = LoadTexture(findTexturePath(),626,626);
         
         if(myTexture1 ==-1)
         {

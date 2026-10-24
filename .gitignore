@@ -1,0 +1,13 @@
+# Build output
+searching-advancer-game
+*.o
+build/
+DerivedData/
+
+# Xcode user data
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# OS
+.DS_Store
