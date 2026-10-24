@@ -81,7 +81,7 @@ Searching-Advancer-Game-/
 ## Credits
 
 Team project for a Computer Graphics course (the window title credits the team as *"The Computer Geeks"*).
-Built by **Hala Jalal** and teammates as a university project at Umm Al-Qura University.
+**Hala Jalal** contributed as a team member on this university Computer Graphics project at Umm Al-Qura University.
 
 ## License
 
